@@ -158,10 +158,59 @@ body::before {
 .scroll-wrapper {
   width: 100%;
   height: 100%;
+
   overflow-y: auto;
+  overflow-x: hidden;
+
   scroll-behavior: smooth;
   padding-bottom: var(--dock-space);
+
+  /* Firefox */
   scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
+}
+
+/* Chrome / Edge / Safari */
+.scroll-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.45);
+  border-radius: 999px;
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+
+  box-shadow:
+    0 0 8px rgba(59, 130, 246, 0.35);
+}
+
+/* Dark mode */
+.dark-theme .scroll-wrapper {
+  scrollbar-color:
+    rgba(148, 163, 184, 0.35)
+    transparent;
+}
+
+.dark-theme .scroll-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+}
+
+.dark-theme .scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+
+  box-shadow:
+    0 0 8px rgba(59, 130, 246, 0.45);
 }
 
 .container {
